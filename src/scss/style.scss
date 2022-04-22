@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+// 1. Configuration and helpers
+@import
+    './abstracts/variables',
+    './abstracts/breakpoints',
+    './abstracts/mixins';
+
+
+// 2. Vendors
+@import
+    './vendors/normalize';
+
+// 3. Base
+@import
+  './base/base',
+  './base/typography';
+
+// 4. Layout-related sections
+@import
+  'layout/grid',
+  'layout/project';
+
+// 5. Components
+@import
+    '../components/Header/Header',
+    '../components/Theme-toggle/ThemeToggle',
+    '../components/Footer/Footer',
+    '../components/CardsSection/CardsSection';
+
+// 7. Themes
+@import
+'themes/default';

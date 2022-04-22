@@ -1,0 +1,12 @@
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    gap: $spacing-5;
+    padding: $spacing-5;
+    position: relative;
+    z-index: 2;
+    background-color: var(--bg-color);
+}

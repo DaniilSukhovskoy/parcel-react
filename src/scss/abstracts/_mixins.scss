@@ -1,0 +1,48 @@
+h1, h2, h3,
+h4, h5, h6 {
+    @extend %headings !optional;
+}
+
+// Components
+@mixin round-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  border-radius: 2rem*0.5;
+  padding: 0 $spacing-4;
+  text-decoration: none;          
+}
+
+@mixin simple-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Banners height
+@mixin banner-height($minHeight: 50vh, $maxHeight: 100vh, $minViewport: 320px, $maxViewport: 1200px) {
+
+  height: $minHeight;
+
+  @media (min-width: $maxViewport){
+    height: $maxHeight;
+  }
+
+}
+
+// fluid typography
+@mixin fluid-font-size($minFontSize: 16px, $maxFontSize: 20px, $minViewport: 600px, $maxViewport: 1200px) {
+	$slope: ($minFontSize - $maxFontSize) / ($minViewport - $maxViewport);
+	$base: $maxFontSize - $slope * $maxViewport;
+
+	font-size: $minFontSize;
+
+	@media (min-width: $minViewport) {
+		font-size: calc(#{$base} + 100vw * #{$slope});
+	}
+
+	@media (min-width: $maxViewport) {
+		font-size: $maxFontSize;
+	}
+}

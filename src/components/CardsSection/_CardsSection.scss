@@ -1,0 +1,45 @@
+.card {
+    width: 100%;
+    margin-bottom: $spacing-6;
+    color: var(--text-color-02);
+    @include fluid-font-size(18px, 20px, 320px, 768px);
+
+    a :hover ~ figcaption {
+        color: var(--text-color-01);
+        transition: color 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955); // fix later
+    }
+
+    figcaption {
+        display: inline-block;
+
+        & :hover {
+            color: var(--text-color-01);
+            transition: color 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        }
+    }
+
+    .image {
+        margin-bottom: $spacing-3;
+        position: relative;
+        border-radius: $border-radius-3;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+            object-position: center center;
+        }
+    }
+
+    ul {
+        color: var(--text-color-05);
+        li {
+            display: inline;
+            &:after {
+                content: ", ";
+            }
+            &:last-child:after {
+                content: "";
+            }
+        }
+    }
+}

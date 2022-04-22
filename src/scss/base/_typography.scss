@@ -1,0 +1,27 @@
+
+%headings {
+    margin: 0;
+    font-weight: normal;
+    color: var(--text-color-02);
+}
+h1 {
+    font-size: 1.5rem;
+    
+}
+
+h2 {
+    @include fluid-font-size(32px, 96px, 320px, 1400px); // minFontSize, maxFontSize, minViewport, maxViewport
+}
+
+h3, p {
+    @include fluid-font-size(18px, 22px, 320px, 768px); // minFontSize, maxFontSize, minViewport, maxViewport
+}
+
+
+p {
+    margin-top: 0;
+    margin-bottom: $spacing-5;
+    max-width: 75ch;
+    line-height: 1.4;
+    color: var(--text-color-01);
+}

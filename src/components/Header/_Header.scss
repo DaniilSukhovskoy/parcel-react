@@ -1,0 +1,40 @@
+header {
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-3;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: $spacing-5;
+    padding-bottom: $spacing-5;
+
+    
+    h1 {
+        margin: 0;
+    }
+
+}
+
+.header-comp {
+    padding-top: $spacing-13;
+}
+
+.nav-links {
+    display: flex;
+    gap: $spacing-3;
+}
+
+.info-link {
+    @include round-control;
+    background-color: var(--ui-02);
+    color: var(--text-color-01);
+    border: 1px solid var(--ui-05);
+    &:hover, &:focus, &:active {
+        background-color: var(--primary-color);
+        color: var(--inverse-01);
+    }
+
+}

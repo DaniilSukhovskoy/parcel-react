@@ -1,0 +1,28 @@
+{
+  "name": "parcel-react",
+  "version": "1.0.0",
+  "description": "",
+  "source": "/src/pages/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "test": "node ./src/services/notion"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.4.1",
+    "os-browserify": "^0.3.0",
+    "parcel": "^2.4.1",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "@notionhq/client": "^1.0.4",
+    "dotenv": "^16.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
