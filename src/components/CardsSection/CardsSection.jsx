@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
+import Masonry from 'react-masonry-css';
+
 export default function CardsSection() {
+
+    const breakpointColumnsObj = {
+        default: 3,
+        768: 2,
+        480: 1,
+      };
 
     const [data, setData] = useState([])
 
@@ -27,30 +35,37 @@ export default function CardsSection() {
       },[])
 
     return (
-        <div className="header-comp container mansory-grid">
-            {
-                data.map( card => {
-                    return(
-                        <div key={ card.id } className="card one-three">
-                            <a href="">
-                                <figure className="image">
-                                    <picture>
-                                        <img src={ card.image } alt=""/>
-                                    </picture>
-                                </figure>
+        <div className="header-comp container">
+            <Masonry 
+                breakpointCols={breakpointColumnsObj}
+                className="my-masonry-grid"
+                columnClassName="my-masonry-grid_column" >
 
-                                <figcaption>
-                                    <span>{ card.title }</span>
-                                </figcaption>
-                            </a>
-                            <ul>
-                                <li>{ card.multi_select }</li>
-                            </ul>
-                        </div>
-                    )
+                {
+                    data.map( card => {
+                        return(
+                            <div key={ card.id } className="card">
+                                <a href="">
+                                    <figure className="image">
+                                        <picture>
+                                            <img src={ card.image } alt=""/>
+                                        </picture>
+                                    </figure>
 
-                })
-            }
+                                    <figcaption>
+                                        <span>{ card.title }</span>
+                                    </figcaption>
+                                </a>
+                                <ul>
+                                    <li>{ card.multi_select }</li>
+                                </ul>
+                            </div>
+                        )
+
+                    })
+                }
+
+            </Masonry>
         </div>
         
     )
