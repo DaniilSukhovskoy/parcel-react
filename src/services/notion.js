@@ -38,7 +38,7 @@ const getWork = async () => {
             id: page.id,
             title: page.properties.Name.title[0].text.content,
             multi_select: multiTags.join(', '),
-            image: page.properties.Image.files[0].file.url,
+            image: page?.properties?.Image?.files[0]?.file?.url,
             featured: page.properties.Featured.checkbox,
 
         };
