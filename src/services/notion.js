@@ -9,7 +9,7 @@ const notion = new Client({
 });
 
 
-const getWork = async () => {
+const getWorks = async () => {
     const response = await notion.databases.query({
         database_id: process.env.NOTION_DATABASE_ID,
         filter: {
@@ -50,7 +50,7 @@ const getWork = async () => {
 };
 
 ;(async () => {
-    const test = await getWork();
+    const test = await getWorks();
     // console.log(test);
 
     const data = JSON.stringify(test);
@@ -63,4 +63,15 @@ const getWork = async () => {
 })()
 
 
-// export default getWork;
+// export default getWorks;
+
+
+const getWork = async () => {
+    const blockId = '27c730a8-59cd-4af5-b620-d28035c0909a';
+    const response = await notion.blocks.children.list({
+    block_id: blockId,
+    page_size: 50,
+  });
+
+  console.log(response);
+}
