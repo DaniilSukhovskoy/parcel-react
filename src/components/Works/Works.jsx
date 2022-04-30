@@ -1,38 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+
+import { Link } from "react-router-dom";
 
 import Masonry from 'react-masonry-css';
 
-export default function CardsSection() {
+export default function Works(props) {
 
     const breakpointColumnsObj = {
         default: 3,
         768: 2,
         480: 1,
-      };
+    };
 
-    const [data, setData] = useState([])
-
-    const getData=()=>{
-        fetch('data.json'
-        ,{
-          headers : { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-           }
-        }
-        )
-          .then(function(response){
-            console.log(response)
-            return response.json();
-          })
-          .then(function(data) {
-            console.log(data);
-            setData(data);
-          });
-      }
-      useEffect(()=>{
-        getData()
-      },[])
 
     return (
         <div className="header-comp container">
@@ -42,10 +21,10 @@ export default function CardsSection() {
                 columnClassName="my-masonry-grid_column" >
 
                 {
-                    data.map( card => {
+                    props.data.map( card => {
                         return(
                             <div key={ card.id } className="card">
-                                <a href="">
+                                <Link to={`/work/${card.id}`}>
                                     <figure className="image">
                                         <picture>
                                             <img src={ card.image } alt=""/>
@@ -55,7 +34,7 @@ export default function CardsSection() {
                                     <figcaption>
                                         <span>{ card.title }</span>
                                     </figcaption>
-                                </a>
+                                </Link>
                                 <ul>
                                     <li>{ card.multi_select }</li>
                                 </ul>
