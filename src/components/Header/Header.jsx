@@ -8,10 +8,10 @@ export default function Header() {
             </div>
             <nav>
                 <ul className="nav-Navlinks">
-                    <li><NavLink className="info-Navlink" to="/">Works</NavLink></li>
-                    <li><NavLink className="info-Navlink" to="/About">About</NavLink></li>
+                    <li><NavLink className="info-Navlink" to="/work">Work</NavLink></li>
+                    <li><NavLink className="info-Navlink" to="/personal">Personal</NavLink></li>
+                    <li><NavLink className="info-Navlink" to="/about">About</NavLink></li>
                     <li><NavLink className="info-Navlink" to="https://www.instagram.com/daniil_sukhovskoy/" target="_blank">Instagram</NavLink></li>
-                    <li><NavLink className="info-Navlink" to="">Email</NavLink></li>
                 </ul>
             </nav>
         </header>

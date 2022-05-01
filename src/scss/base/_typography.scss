@@ -15,6 +15,7 @@ h2 {
 
 h3, p {
     @include fluid-font-size(18px, 22px, 320px, 768px); // minFontSize, maxFontSize, minViewport, maxViewport
+    margin-bottom: $spacing-5;
 }
 
 
