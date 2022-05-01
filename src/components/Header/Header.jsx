@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export default function Header() {
     return (
         <header className="container">
@@ -5,11 +7,11 @@ export default function Header() {
                 <h1>Daniil Sukhovskoy</h1>
             </div>
             <nav>
-                <ul className="nav-links">
-                    <li><a className="info-link" href="./index.html">Works</a></li>
-                    <li><a className="info-link" href="./about.html">About</a></li>
-                    <li><a className="info-link" href="https://www.instagram.com/daniil_sukhovskoy/" target="_blank">Instagram</a></li>
-                    <li><a className="info-link" href="">Email</a></li>
+                <ul className="nav-Navlinks">
+                    <li><NavLink className="info-Navlink" to="/work">Work</NavLink></li>
+                    <li><NavLink className="info-Navlink" to="/personal">Personal</NavLink></li>
+                    <li><NavLink className="info-Navlink" to="/about">About</NavLink></li>
+                    <li><NavLink className="info-Navlink" to="https://www.instagram.com/daniil_sukhovskoy/" target="_blank">Instagram</NavLink></li>
                 </ul>
             </nav>
         </header>

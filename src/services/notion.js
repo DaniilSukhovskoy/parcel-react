@@ -9,15 +9,15 @@ const notion = new Client({
 });
 
 
-const getWork = async () => {
+const getWorks = async () => {
     const response = await notion.databases.query({
         database_id: process.env.NOTION_DATABASE_ID,
-        filter: {
-            property: "Type",
-            select: {
-                equals: "Work",
-            }
-        },
+        // filter: {
+        //     property: "Type",
+        //     select: {
+        //         equals: "Work",
+        //     }
+        // },
         sorts: [
             {
                 property: "Name",
@@ -29,38 +29,50 @@ const getWork = async () => {
 
 
     const works = response.results.map((page) => {
-        // console.log(page);
-        let multiTags = page.properties.Tags.multi_select.map((element) => {
-            return element.name
-        });
-
-        return {
-            id: page.id,
-            title: page.properties.Name.title[0].text.content,
-            multi_select: multiTags.join(', '),
-            image: page?.properties?.Image?.files[0]?.file?.url,
-            featured: page.properties.Featured.checkbox,
-
-        };
-        
+        return page;
     });
 
     return works;
 
 };
 
+
+
+
+// pages
+const getWork = async () => {
+    const blockId = '27c730a8-59cd-4af5-b620-d28035c0909a';
+    const response = await notion.blocks.children.list({
+    block_id: blockId,
+    page_size: 50,
+    });
+
+    const work = response.results.map((blocks) => {
+        return blocks;
+    });
+
+    return work;
+};
+
+// to json
 ;(async () => {
-    const test = await getWork();
-    // console.log(test);
+    const works = await getWorks();
+    const work = await getWork();
 
-    const data = JSON.stringify(test);
-    try {
-        fs.writeFileSync('./dist/data.json', data);
-        console.log("JSON data is saved.");
-    } catch (error) {
-        console.error(err);
+    const saveData = (data, file) => {
+        const finished = (error) => {
+            if(error){
+                console.error(error)
+                return;
+            }
+            console.log(`JSON ${file} is saved.`);
+        }
+
+        const jsonData = JSON.stringify(data, null, 2);
+        fs.writeFile(file,jsonData,finished);
+
     }
+
+    saveData(works, './dist/works.json');
+    saveData(work, './dist/work.json');
 })()
-
-
-// export default getWork;

@@ -22,12 +22,12 @@ header {
     padding-top: $spacing-13;
 }
 
-.nav-links {
+.nav-Navlinks {
     display: flex;
     gap: $spacing-3;
 }
 
-.info-link {
+.info-Navlink {
     @include round-control;
     background-color: var(--ui-02);
     color: var(--text-color-01);

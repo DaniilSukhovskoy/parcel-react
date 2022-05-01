@@ -5,7 +5,7 @@
   "source": "/src/pages/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "start": "parcel",
+    "start": "parcel ./src/index.html",
     "build": "parcel build",
     "test": "node ./src/services/notion"
   },
@@ -13,9 +13,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-react": "^7.16.7",
     "@parcel/transformer-sass": "^2.4.1",
+    "json-loader": "^0.5.7",
     "os-browserify": "^0.3.0",
     "parcel": "^2.4.1",
+    "parcel-plugin-json-url-loader": "^0.1.2",
     "path-browserify": "^1.0.1",
     "postcss": "^8.4.12",
     "postcss-import": "^14.1.0",
@@ -28,6 +32,7 @@
     "dotenv": "^16.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-masonry-css": "^1.0.16"
+    "react-masonry-css": "^1.0.16",
+    "react-router-dom": "^6.3.0"
   }
 }

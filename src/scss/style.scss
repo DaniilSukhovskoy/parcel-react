@@ -24,9 +24,11 @@
 // 5. Components
 @import
     '../components/Header/Header',
+    '../components/Hero/Hero',
+    '../components/Article/Article',
     '../components/Theme-toggle/ThemeToggle',
     '../components/Footer/Footer',
-    '../components/CardsSection/CardsSection';
+    '../pages/Works/Works';
 
 // 7. Themes
 @import
