@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "source": "/src/pages/index.html",
+  "proxy": "http://localhost:5500",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "parcel ./src/index.html --cert C:/Users/Daniil/cert/localhost.pem --key C:/Users/Daniil/cert/localhost-key.pem",

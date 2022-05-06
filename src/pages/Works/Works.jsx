@@ -15,12 +15,13 @@ export default function Works(props) {
     };
 
     const renderCard = (filter) =>(
-        props.data.map( card => (card.properties.Type.select.name === filter ? (<Card key={card.id} node={card} filter={filter}/>) : null ))
+        props.data.map( card => (card.type === filter ? (<Card key={card.id} card={card} filter={filter}/>) : null ))
     )
 
 
     return (
         <div className="header-comp container">
+            {console.log(props.data)}
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="my-masonry-grid"

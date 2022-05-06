@@ -1,17 +1,44 @@
 import test from '../../../dist/work.json';
+import React, { useState, useEffect } from "react";
+
+
+
 import Hero from "../Hero/Hero";
 import { useParams } from "react-router-dom";
 import Article from "../Article/Article";
 
 
-export default function Project(data) {
+export default function Project({data}) {
     let { id } = useParams();
+    
 
-    return(
+    const [project, setProject] = useState([])
+
+    useEffect(() => {
+        const getProjectFromBackEnd = () => {
+            fetch(`http://localhost:5500/${id}`, { mode: 'cors' })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    setProject(data);
+                });
+        }
+        getProjectFromBackEnd();
+
+    }, []);
+
+    const passData = (data) => {
+        const [pass] = data.filter(project => project.id === id);
+        return pass?.cover;
+    }
+
+
+    return (
         <article>
-            <Hero node={test} data={data}/>
-            <Article node={test} />
+            <Hero node={project} data={passData(data)} />
+            <Article node={project} />
         </article>
     )
-        
+
 }

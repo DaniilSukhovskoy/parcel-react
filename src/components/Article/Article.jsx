@@ -1,32 +1,36 @@
 export default function Article({ node }) {
 
     const renderElement = (item) => {
-        if (item.heading_3)
+        if (item.h3)
             return (
-                <h3 className="grid-col-span-2" key={item.id}>{item.heading_3?.rich_text[0]?.text.content}</h3>
+                <h3 className="grid-col-span-2" key={item.id}>{item.h3}</h3>
             )
 
         if (item.paragraph)
             return (
-                <p key={item.id}>{item.paragraph?.rich_text[0]?.text?.content}</p>
+                <p key={item.id}>{item.paragraph}</p>
             )
 
         if (item.image)
             return (
                 <picture key={item.id}>
-                    <img src={item.image.file.url} alt="" />
+                    <img
+                        src={item.image}
+                        alt={item.image_alt}
+                        width={item.image_width}
+                        height={item.image_height}/>
                 </picture>
             )
 
-        // if (item.video)
-        //     return (
-        //         <div className="iframe-responsive" key={item.id}>
-        //             <iframe
-        //             src={item.video.external.url}
-        //             frameBorder="0"
-        //         />
-        //         </div>
-        //     )
+        if (item.video)
+            return (
+                <div className="iframe-responsive" key={item.id}>
+                    <iframe
+                    src={item.video}
+                    frameBorder="0"
+                />
+                </div>
+            )
             
         return null;
 

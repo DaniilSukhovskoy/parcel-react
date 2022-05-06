@@ -15,42 +15,19 @@ export default function App() {
 
   const [data, setData] = useState([])
 
-
-  // notion database fetch
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const res = await fetch('http://localhost:5500/works');
-  //     const data = await res.json();
-  //     setData(data);
-  //     console.log(data);
-  //   }
-
-  //   getData();
-
-  // }, []);
-
-
   useEffect(() => {
-    const getData=()=>{
-        fetch('https://localhost:1234/works.json',
-        {
-          headers : { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-           }
-        }
-        )
-          .then(function(response){
-            return response.json();
-          })
-          .then(function(data) {
-            setData(data);
-          });
-      }
-      console.log(data);
-      getData();
+    const getData = () => {
+      fetch('http://localhost:5500', { mode: 'cors' })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          setData(data);
+        });
+    }
+    getData();
 
-}, []);
+  }, []);
 
 
   return (
