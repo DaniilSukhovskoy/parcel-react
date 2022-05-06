@@ -71,7 +71,8 @@ async function getProject(id) {
             h3: blocks?.heading_3?.rich_text[0]?.text?.content,
             h4: blocks?.heading_4?.rich_text[0]?.text?.content,
             paragraph: blocks?.paragraph?.rich_text[0]?.text?.content,
-            image: blocks?.image?.file.url,
+            image: blocks?.image?.file?.url,
+            image_ext: blocks?.image?.external?.url,
             video: blocks?.video?.external.url,
             // experimental
             image_width: image_caption?.[0],

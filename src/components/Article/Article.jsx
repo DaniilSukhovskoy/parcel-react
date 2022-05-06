@@ -22,6 +22,17 @@ export default function Article({ node }) {
                 </picture>
             )
 
+        if (item.image_ext)
+            return (
+                <picture key={item.id}>
+                    <img
+                        src={item.image_ext}
+                        alt={item.image_alt}
+                        width={item.image_width}
+                        height={item.image_height}/>
+                </picture>
+            )   
+
         if (item.video)
             return (
                 <div className="iframe-responsive" key={item.id}>
