@@ -1,21 +1,21 @@
 import { Link } from "react-router-dom";
 
-export default function Card({ node, filter }) {
+export default function Card({ card, filter }) {
     return (
         <div className="card">
-            <Link to={`/${filter}/${node.id}`}>
+            <Link to={`/${filter}/${card.id}`}>
                 <figure className="image">
                     <picture>
-                        <img src={node.properties.Image.files[0].file.url} alt="" />
+                        <img src={card.image} alt="" />
                     </picture>
                 </figure>
 
                 <figcaption>
-                    <span>{node.properties.Name.title[0].plain_text}</span>
+                    <span>{card.title}</span>
                 </figcaption>
             </Link>
             <ul>
-                <li>{node.properties.Tags.multi_select.map(select => (select.name)).join(', ')}</li>
+                <li>{card.tags}</li>
             </ul>
         </div>
 

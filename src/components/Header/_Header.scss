@@ -10,6 +10,9 @@ header {
     align-items: center;
     padding-top: $spacing-5;
     padding-bottom: $spacing-5;
+    mix-blend-mode: difference;
+    left: 0;
+    right: 0;
 
     
     h1 {
