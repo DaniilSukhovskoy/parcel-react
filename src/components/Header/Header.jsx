@@ -11,7 +11,6 @@ export default function Header() {
                     <li><NavLink to="/work">Work</NavLink></li>
                     <li><NavLink to="/personal">Personal</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
-                    <li><NavLink to="https://www.instagram.com/daniil_sukhovskoy/" target="_blank">Instagram</NavLink></li>
                 </ul>
             </nav>
         </header>
