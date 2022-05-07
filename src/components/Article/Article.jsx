@@ -1,5 +1,6 @@
-export default function Article({ node }) {
+import {createSet} from '../../services/create-set';
 
+export default function Article({ node }) {
     const renderElement = (item) => {
         if (item.h3)
             return (
@@ -29,8 +30,11 @@ export default function Article({ node }) {
                         src={item.image_ext}
                         alt={item.image_alt}
                         width={item.image_width}
-                        height={item.image_height}/>
+                        height={item.image_height}
+                        srcSet={createSet(item.image_ext, 100)}
+                    />
                 </picture>
+                
             )   
 
         if (item.video)
