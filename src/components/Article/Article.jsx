@@ -1,5 +1,8 @@
 import {createSet} from '../../services/create-set';
 
+import '@justinribeiro/lite-youtube';
+import { youtube_id } from '../../services/youtube-id';
+
 export default function Article({ node }) {
     const renderElement = (item) => {
         if (item.h3)
@@ -39,12 +42,13 @@ export default function Article({ node }) {
 
         if (item.video)
             return (
-                <div className="iframe-responsive" key={item.id}>
-                    <iframe
-                    src={item.video}
-                    frameBorder="0"
-                />
-                </div>
+                <lite-youtube
+                    videoid={youtube_id(item.video)}
+                    key={item.id}
+                    params="loop=1&enablejsapi=1&modestbranding=1&rel=0"
+                    nocookie
+                    
+                ></lite-youtube>
             )
             
         return null;
