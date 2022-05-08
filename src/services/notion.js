@@ -31,9 +31,11 @@ const getWorks = async () => {
     const works = response.results.map((page) => {
         return {
             id: page.id,
-            cover: page?.cover?.file.url, // replace with props later
+            cover: page?.cover,
+            cover_info: page.properties.Image_info?.rich_text[0]?.text?.content,
             type: page.properties.Type.select.name,
-            image: page.properties.Image.files[0].file.url,
+            image: page.properties.Image,
+            image_info: page.properties.Image_info?.rich_text[0]?.text?.content,
             title: page.properties.Name.title[0].plain_text,
             tags: page.properties.Tags.multi_select.map(select => (select.name)).join(', '),
         }
@@ -60,9 +62,7 @@ async function getProject(id) {
     });
 
     const project = response.results.map((blocks) => {
-        // slice caption
-        const image_caption = blocks?.image?.caption[0]?.text.content.split(/\s*(?:,|x)\s*/);
-
+        
         return {
             id: blocks.id,
             children: blocks.has_children,
@@ -70,14 +70,9 @@ async function getProject(id) {
             h2: blocks?.heading_2?.rich_text[0]?.text?.content,
             h3: blocks?.heading_3?.rich_text[0]?.text?.content,
             h4: blocks?.heading_4?.rich_text[0]?.text?.content,
-            paragraph: blocks?.paragraph?.rich_text[0]?.text?.content,
-            image: blocks?.image?.file?.url,
-            image_ext: blocks?.image?.external?.url,
+            paragraph: blocks?.paragraph?.rich_text,
+            image: blocks?.image,
             video: blocks?.video?.external.url,
-            // experimental
-            image_width: image_caption?.[0],
-            image_height: image_caption?.[1],
-            image_alt: image_caption?.[2],
         }
     });
 

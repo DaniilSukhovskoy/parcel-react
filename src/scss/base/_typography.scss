@@ -4,21 +4,24 @@ html {
     font-family: 'DM Sans', Arial, Helvetica, sans-serif;
     font-weight: 500;
 }
+
 %headings {
     margin: 0;
     font-weight: normal;
     color: var(--text-color-02);
 }
+
 h1 {
     font-size: 1.5rem;
-    
+
 }
 
 h2 {
     @include fluid-font-size(32px, 96px, 320px, 1400px); // minFontSize, maxFontSize, minViewport, maxViewport
 }
 
-h3, p {
+h3,
+p {
     @include fluid-font-size(18px, 22px, 320px, 768px); // minFontSize, maxFontSize, minViewport, maxViewport
     margin-bottom: $spacing-5;
 }
@@ -30,4 +33,27 @@ p {
     max-width: 75ch;
     line-height: 1.4;
     color: var(--text-color-01);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.code {
+    font-family: monospace;
+    background-color: var(--ui-01);
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.underline, a {
+    text-decoration: underline;
 }

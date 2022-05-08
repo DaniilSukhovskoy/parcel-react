@@ -1,7 +1,8 @@
-import {createSet} from '../../services/create-set';
-
 import '@justinribeiro/lite-youtube';
 import { youtube_id } from '../../services/youtube-id';
+
+import { Text } from '../Text/Text';
+import { Image } from '../Image/Image';
 
 export default function Article({ node }) {
     const renderElement = (item) => {
@@ -12,33 +13,15 @@ export default function Article({ node }) {
 
         if (item.paragraph)
             return (
-                <p key={item.id}>{item.paragraph}</p>
+                <p key={item.id}>
+                    <Text text={item.paragraph} id={item.id}/>
+                </p>
             )
 
         if (item.image)
             return (
-                <picture key={item.id}>
-                    <img
-                        src={item.image}
-                        alt={item.image_alt}
-                        width={item.image_width}
-                        height={item.image_height}/>
-                </picture>
+                <Image key={item.id} image={item.image}/>
             )
-
-        if (item.image_ext)
-            return (
-                <picture key={item.id}>
-                    <img
-                        src={item.image_ext}
-                        alt={item.image_alt}
-                        width={item.image_width}
-                        height={item.image_height}
-                        srcSet={createSet(item.image_ext, 100)}
-                    />
-                </picture>
-                
-            )   
 
         if (item.video)
             return (
@@ -57,7 +40,7 @@ export default function Article({ node }) {
     }
 
     return (
-        <div className="project container extra-margin project-grid">
+        <div className="container project-grid">
             {node.map(item => (renderElement(item)))}
         </div>
     )
