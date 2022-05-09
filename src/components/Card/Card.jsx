@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
+import { Image } from "../Image/Image";
 
 export default function Card({ card, filter }) {
     return (
         <div className="card">
             <Link to={`/${filter}/${card.id}`}>
                 <figure className="image">
-                    <picture>
-                        <img src={card.image} alt="" />
-                    </picture>
+                    <Image image={card.image} extra={card.image_info}/>
                 </figure>
 
                 <figcaption>

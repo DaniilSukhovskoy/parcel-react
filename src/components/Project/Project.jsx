@@ -24,13 +24,13 @@ export default function Project({data}) {
                     setProject(data);
                 });
         }
-        getProjectFromBackEnd();
+        getProjectFromBackEnd();     
 
     }, []);
 
     const passData = (data) => {
         const [pass] = data.filter(project => project.id === id);
-        return pass?.cover;
+        return pass;
     }
 
 

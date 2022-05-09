@@ -21,7 +21,7 @@ export default function Works(props) {
 
     return (
         <div className="header-comp container">
-            {console.log(props.data)}
+            {/* {console.log(props)} // fix it */}
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="my-masonry-grid"

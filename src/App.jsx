@@ -15,31 +15,27 @@ export default function App() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    const getData = () => {
-      fetch('http://localhost:5500', { mode: 'cors' })
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          setData(data);
-        });
-    }
-    getData();
-
+    fetch('http://localhost:5500', { mode: 'cors' })
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setData(data);
+      });
   }, []);
 
 
-  return (
-    <>
-      <Header />
-      <Routes>
-        <Route path="/:filter" element={<Works data={data} />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/:filter/:id" element={<Project data={data} />} />
-        <Route path="/*" element={<Navigate to="/work" />} />
-      </Routes>
+return (
+  <>
+    <Header />
+    <Routes>
+      <Route path="/:filter" element={<Works data={data} />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/:filter/:id" element={<Project data={data} />} />
+      <Route path="/*" element={<Navigate to="/work" />} />
+    </Routes>
 
-      <Footer />
-    </>
-  )
+    <Footer />
+  </>
+)
 }
