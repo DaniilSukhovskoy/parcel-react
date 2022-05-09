@@ -8,7 +8,10 @@ export default function Article({ node }) {
     const renderElement = (item) => {
         if (item.h3)
             return (
-                <h3 className="grid-col-span-2" key={item.id}>{item.h3}</h3>
+                
+                <h3 className="grid-col-span-2" key={item.id}>
+                    <Text text={item.h3} id={item.id}/>
+                </h3>
             )
 
         if (item.paragraph)
@@ -46,3 +49,4 @@ export default function Article({ node }) {
     )
 
 }
+
