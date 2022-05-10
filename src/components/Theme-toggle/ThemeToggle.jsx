@@ -4,40 +4,43 @@ import { useLocalStorage } from '../../services/useLocalStorage';
 export default function ThemeToggle() {
 
     let [theme, setTheme] = useLocalStorage('theme', 'dark');
+    const themeClass = document.documentElement.classList;
 
     // on load
     useEffect(() => {
         const data = localStorage.getItem('theme');
         if (data) {
             setTheme(JSON.parse(data));
-            showSelected();
+            toggleClass();
         }
     }, []);
 
-    // on toggle change !!!
+    // on toggle change
     const handleChange = (e) => {
-        showSelected();
-        setTheme(e.target.value);
+        theme = e.target.value
+        setTheme(theme);
+        console.log(theme)
+        toggleClass();
     }
 
-    const showSelected = () => {
-        theme === 'auto' ? getDetectTheme() : document.documentElement.classList.toggle("lightmode", theme === 'light');
+    const toggleClass = () => {
+        theme === 'auto' ? getMediaTheme() : themeClass.toggle("lightmode", theme === 'light');
     }
 
-    // system change
+    // system theme change
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-        getDetectTheme()
+        getMediaTheme()
     });
 
-    const getDetectTheme = () => {
+    const getMediaTheme = () => {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             autoTheme = 'dark';
-            document.documentElement.classList.remove("lightmode");
+            themeClass.remove("lightmode");
         } else {
             autoTheme = 'light';
-            document.documentElement.classList.add("lightmode");
+            themeClass.add("lightmode");
         }
-        console.log(`prefers-color-scheme: ${autoTheme}. Theme is ${theme}`);
+        console.log(`device theme is ${autoTheme}`);
     }
 
 
