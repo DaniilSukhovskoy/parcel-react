@@ -19,8 +19,9 @@ export default function ThemeToggle() {
     const handleChange = (e) => {
         theme = e.target.value
         setTheme(theme);
-        console.log(theme)
         toggleClass();
+
+        console.log(theme)
     }
 
     const toggleClass = () => {
