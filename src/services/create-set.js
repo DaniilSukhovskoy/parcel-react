@@ -19,7 +19,7 @@ export const createSet = (url, img_width) => {
         }
 
     for (let i = 0; i < set.length; i++) {
-        set[i] = url + '?tr=w-' + set[i] + ` ${set[i]}w`;
+        set[i] = `${url}?tr=w-${set[i]} ${set[i]}w`;
     }
     return set.join(', ')
 
