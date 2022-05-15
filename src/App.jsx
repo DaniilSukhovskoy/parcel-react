@@ -6,9 +6,11 @@ import Footer from './components/Footer/Footer';
 import Works from './pages/Works/Works';
 import About from "./pages/About/About";
 import Project from "./components/Project/Project";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 
 import './scss/style.scss';
+
 
 export default function App() {
 
@@ -27,6 +29,7 @@ export default function App() {
 
 return (
   <>
+    <ScrollToTop />
     <Header />
     <Routes>
       <Route path="/:filter" element={<Works data={data} />} />

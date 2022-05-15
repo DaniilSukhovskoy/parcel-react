@@ -1,8 +1,4 @@
-import test from '../../../dist/work.json';
 import React, { useState, useEffect } from "react";
-
-
-
 import Hero from "../Hero/Hero";
 import { useParams } from "react-router-dom";
 import Article from "../Article/Article";
