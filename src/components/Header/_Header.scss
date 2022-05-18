@@ -3,22 +3,30 @@ header {
     top: 0;
     z-index: 3;
     width: 100%;
+    max-width: 2800px;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-3;
     justify-content: space-between;
-    align-items: center;
-    padding-top: $spacing-5;
-    padding-bottom: $spacing-5;
+    padding-left: $spacing-5;
     mix-blend-mode: difference;
     left: 0;
     right: 0;
 
-    
+
     h1 {
         color: #c6c6c6;
         margin: 0;
+        height: 48px;
+        display: flex;
+        align-items: center;
     }
+
+    nav {
+        display: none;
+    }
+
 
     ul {
         display: flex;
@@ -52,25 +60,52 @@ header {
     }
 
 
+
+}
+
+.open {
+    nav {
+        display: block;
+    }
+        
+    ul {
+        padding-top: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+    h1 {
+        display: none;
+    }
+
 }
 
 .header-comp {
-    padding-top: $spacing-13;
+    padding-top: $spacing-11;
 }
 
-// .nav-Navlinks {
-//     display: flex;
-//     gap: $spacing-3;
-// }
+@media (min-width: 44rem) {
+    header {
+        padding: $spacing-5;
 
-// .info-Navlink {
-//     @include round-control;
-//     background-color: var(--ui-02);
-//     color: var(--text-color-01);
-//     border: 1px solid var(--ui-05);
-//     &:hover, &:focus, &:active {
-//         background-color: var(--primary-color);
-//         color: var(--inverse-01);
-//     }
+        nav {
+            display: block;
+        }
 
-// }
+        h1 {
+            height: auto;
+        }
+
+        .btn {
+            display: none;
+        }
+    }
+    
+    .header-comp {
+        padding-top: $spacing-13;
+    }
+
+
+    
+}
