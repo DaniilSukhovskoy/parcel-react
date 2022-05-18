@@ -1,0 +1,55 @@
+.btn {
+    display: flex;
+    min-width: 0;
+    padding: 4px 9px 0 0;
+    border: none;
+    border-radius: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    background: 0 0;
+    height: 48px;
+    width: 48px;
+    align-items: center;
+    justify-content: center;
+
+        svg {
+            height: 32px;
+            width: 32px;
+            color: #c6c6c6;
+        }
+}
+
+// .ham {
+//     height: 20px;
+//     padding: 14px 16px 14px 14px;
+//     overflow: hidden;
+//     box-sizing: content-box;
+//     font-size: 0;
+// }
+
+// .ham-icon {
+//     width: 20px;
+//     height: 8px;
+//     display: inline-block;
+//     position: relative;
+
+//     &:before, &:after {
+//         height: 2px;
+//         content: "";
+//         position: absolute;
+//         display: block;
+//         left: 0;
+//         right: 0;
+//         width: 100%;
+//         background: #c6c6c6;
+//     }
+
+//     &:before {
+//         top: 0;
+//     }
+
+//     &:after {
+//         bottom: 0;
+//     }
+
+// }
