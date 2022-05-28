@@ -3,9 +3,12 @@ const { Client } = require('@notionhq/client');
 
 
 const express = require('express');
+const favicon = require('serve-favicon')
+var path = require('path')
 const PORT = process.env.PORT || 5500;
 const app = express()
 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
 
@@ -53,35 +56,61 @@ app.get('/', async (req, res) => {
 })
 
 
+
 // Project
-async function getProject(id) {
-    const blockId = id;
-    const response = await notion.blocks.children.list({
-    block_id: blockId,
-    page_size: 50,
-    });
+// async function getProject(id) {
+//     const { results } = await notion.blocks.children.list({
+//         block_id: id,
+//     });
 
-    const project = response.results.map((blocks) => {
-        
-        return {
-            id: blocks.id,
-            children: blocks.has_children,
-            type: blocks.type,
-            h2: blocks?.heading_2?.rich_text[0]?.text?.content,
-            h3: blocks?.heading_3?.rich_text,
-            h4: blocks?.heading_4?.rich_text,
-            paragraph: blocks?.paragraph?.rich_text,
-            image: blocks?.image,
-            video: blocks?.video?.external.url,
-        }
-    });
+//     const expandedResults = [];
 
-    return project;
-    
-};
+//     for (let block of results) {
+//         if (block.has_children) {
+//             block[block.type].children = await getProject(block.id);
+//         }
+
+//         expandedResults.push(block);
+//     }
+
+
+//     return expandedResults
+// }
+
+// test
+async function readBlocks(id) {
+
+    try {
+        const { results } = await notion.blocks.children.list({
+            block_id: id,
+        });
+
+        const childRequests = results.map(async (block) => {
+            const children = []
+
+            if (block.has_children) {
+                block[block.type].children = await readBlocks(block.id);
+                test.push(block)
+                return { ...block, children };
+            }
+
+            return block;
+        });
+
+        const expandedResults = await Promise.all(childRequests);
+
+        return expandedResults;
+
+    } catch (error) {
+        console.log('error!');
+        console.error(error.body);
+    }
+}
+
+
 
 app.get('/:id', async (req, res) => {
-    const works = await getProject(req.params.id);
+    const works = await readBlocks(req.params.id);
     res.set('Access-Control-Allow-Origin', 'https://localhost:1234');
     res.json(works);
 })
